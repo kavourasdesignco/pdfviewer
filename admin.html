@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Issuu - Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- PDF.js for processing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+</head>
+
+<body>
+    <div id="admin-app">
+        <!-- Login Screen -->
+        <div id="login-screen" class="auth-container">
+            <div class="auth-box">
+                <h2>Admin Login</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required placeholder="admin@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                    <p id="login-error" class="error-msg"></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard Screen -->
+        <div id="dashboard-screen" class="dashboard-container hidden">
+            <header class="dashboard-header">
+                <h2>Mini Issuu Admin</h2>
+                <button id="logout-btn" class="btn-secondary">Logout</button>
+            </header>
+
+            <main class="dashboard-content">
+                <!-- Upload Section -->
+                <section class="upload-section">
+                    <h3>Upload New Publication</h3>
+                    <div id="dropzone" class="dropzone">
+                        <p>Drag & drop PDF here or click to select</p>
+                        <input type="file" id="file-input" accept="application/pdf" hidden>
+                    </div>
+                    <div id="upload-progress" class="progress-container hidden">
+                        <div class="progress-bar">
+                            <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <p id="progress-text">Processing...</p>
+                    </div>
+                </section>
+
+                <!-- Publications List -->
+                <section class="list-section">
+                    <h3>Your Publications</h3>
+                    <div id="pub-list" class="pub-list">
+                        <!-- Items injected here -->
+                        <p class="loading-text">Loading...</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>

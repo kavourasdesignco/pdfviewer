@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Issuu Viewer</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- PDF.js for rendering (needed for viewer if we render on fly, or just for admin processing) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+</head>
+<body>
+    <div id="app">
+        <!-- Viewer Container -->
+        <div id="viewer-container" class="viewer-container hidden">
+            <header class="viewer-header">
+                <h1 id="pub-title">Publication Title</h1>
+                <div class="controls">
+                    <button id="prev-btn" class="btn-icon">←</button>
+                    <span id="page-indicator">Page 1 / 10</span>
+                    <button id="next-btn" class="btn-icon">→</button>
+                </div>
+            </header>
+            <div class="flipbook-stage">
+                <div id="flipbook" class="flipbook">
+                    <!-- Pages will be injected here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Landing / Error State -->
+        <div id="landing-container" class="landing-container">
+            <h1>Mini Issuu</h1>
+            <p>Please provide a publication ID to view.</p>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+    <script src="viewer.js"></script>
+</body>
+</html>
